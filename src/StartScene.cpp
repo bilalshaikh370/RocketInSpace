@@ -16,17 +16,26 @@ StartScene::~StartScene()
 
 void StartScene::draw()
 {
-	m_pOcean->draw();
+	//m_pOcean->draw();
+	m_pSpace->draw();
 	m_pStartLabel->draw();
 	m_pStartButton->draw();
+	m_pInstructionButton->draw();
+	m_pQuitButton->draw();
 	
 }
 
 void StartScene::update()
 {
-	m_pOcean->update();
+	//m_pOcean->update();
+	m_pSpace->update();
 	m_pStartButton->setMousePosition(m_mousePosition);
 	m_pStartButton->ButtonClick();
+	m_pInstructionButton->setMousePosition(m_mousePosition);
+	m_pInstructionButton->ButtonClick();
+	m_pQuitButton->setMousePosition(m_mousePosition);
+	m_pQuitButton->ButtonClick();
+
 }
 
 void StartScene::clean()
@@ -57,6 +66,8 @@ void StartScene::handleEvents()
 			{
 			case SDL_BUTTON_LEFT:
 				m_pStartButton->setMouseButtonClicked(true);
+				m_pQuitButton->setMouseButtonClicked(true);
+				m_pInstructionButton->setMouseButtonClicked(true);
 				break;
 			}
 
@@ -66,6 +77,8 @@ void StartScene::handleEvents()
 			{
 			case SDL_BUTTON_LEFT:
 				m_pStartButton->setMouseButtonClicked(false);
+				m_pQuitButton->setMouseButtonClicked(false);
+				m_pInstructionButton->setMouseButtonClicked(false);
 				break;
 			}
 			break;
@@ -102,19 +115,29 @@ void StartScene::handleEvents()
 // this function is used for initialization
 void StartScene::start()
 {
-	m_pOcean = new Ocean();
-	addChild(m_pOcean);
+	/*m_pOcean = new Ocean();
+	addChild(m_pOcean);*/
+	m_pSpace = new Space();
+		addChild(m_pSpace);
 
 	
-	SDL_Color yellow = { 255, 255, 0, 255 };
-	m_pStartLabel = new Label("Mail Pilot", "Dock51", 80, yellow, 
+	SDL_Color Green = { 0, 255, 255, 255 };
+	m_pStartLabel = new Label("Rocket in Space", "Dock51", 80, Green, 
 		glm::vec2(Config::SCREEN_WIDTH * 0.5f, 100.0f));
 	m_pStartLabel->setParent(this);
 	addChild(m_pStartLabel);
 
 	m_pStartButton = new StartButton();
-	m_pStartButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, Config::SCREEN_HEIGHT * 0.5f));
+	/*m_pStartButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, Config::SCREEN_HEIGHT * 0.5f));*/
 	addChild(m_pStartButton);
+
+	m_pInstructionButton = new InstructionButton();
+	//m_pInstructionButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.3f, Config::SCREEN_HEIGHT * 0.5f));
+	addChild(m_pInstructionButton);
+
+	m_pQuitButton = new QuitButton();
+	//m_pQuitButton->setPosition(glm::vec2(Config::SCREEN_WIDTH * 0.5f, Config::SCREEN_HEIGHT * 0.5f));
+	addChild(m_pQuitButton);
 }
 
 glm::vec2 StartScene::getMousePosition()
