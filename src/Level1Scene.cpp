@@ -3,6 +3,9 @@
 #include <iostream>
 #include "ScoreBoardManager.h"
 
+
+//Name : Bilal Shaikh (301093908)
+
 Level1Scene::Level1Scene()
 {
 	start();
@@ -14,15 +17,15 @@ Level1Scene::~Level1Scene()
 
 void Level1Scene::draw()
 {
-	//m_pOcean->draw();
+	
 	
 	m_pSpace->draw();
 	
 	
-	//m_pIsland->draw();
+	
 	m_pDiamonds->draw();
 	
-	//m_pPlane->draw();
+	
 
 	m_pRocket->draw();
 
@@ -36,20 +39,16 @@ void Level1Scene::draw()
 
 void Level1Scene::update()
 {
-	//m_pOcean->update();
-
-	//TheSoundManager::Instance()->load("../Assets/audio/rain.wav", "thunder", SOUND_SFX);
 
 	m_pSpace->update();
-	//m_pIsland->update();
+	
 	m_pDiamonds->update();
 
-	//m_pPlane->setPosition(glm::vec2(m_mousePosition.x, m_pPlane->getPosition().y));
-	//m_pPlane->update();
+	
 
 	m_pRocket->setPosition(glm::vec2(m_mousePosition.x, m_pRocket->getPosition().y));
 	m_pRocket->update();
-	//CollisionManager::AABBCheck(m_pPlane, m_pIsland);
+	
 
 	CollisionManager::squaredRadiusCheck(m_pRocket, m_pDiamonds);
 
@@ -159,17 +158,12 @@ void Level1Scene::handleEvents()
 
 void Level1Scene::start()
 {
-	/*m_pOcean = new Ocean();
-	addChild(m_pOcean);*/
-
-	//m_pIsland = new Island(); // instantiates Island
-	//addChild(m_pIsland);
+	
 	
 	m_pDiamonds = new Diamonds(); // instantiates Island
 	addChild(m_pDiamonds);
 
-	//m_pPlane = new Plane(); // instantiates Plane
-	//addChild(m_pPlane);
+	
 
 	m_pRocket = new Rocket();
 	addChild(m_pRocket);
@@ -179,7 +173,7 @@ void Level1Scene::start()
 
 	// instantiate Cloud Pool
 	m_buildPlanets();
-	TheSoundManager::Instance()->load("../Assets/audio/rain.wav", "thunder", SOUND_SFX);
+
 	ScoreBoardManager::Instance()->Start();
 }
 

@@ -1,6 +1,9 @@
 #include "QuitButton.h"
 #include "Game.h"
 
+//Name : Bilal Shaikh (301093908)
+
+
 QuitButton::QuitButton()
 // call super constructor
 	:Button(

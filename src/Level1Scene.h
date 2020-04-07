@@ -13,6 +13,8 @@
 #include "Planet.h"
 #include "Diamonds.h"
 
+//Name : Bilal Shaikh (301093908)
+
 
 class Level1Scene : public Scene
 {
@@ -30,11 +32,9 @@ public:
 	glm::vec2 getMousePosition();
 
 private:
-	// game objects
-	//Plane* m_pPlane;
-	Island* m_pIsland;
+	
 	Diamonds* m_pDiamonds;
-	//Ocean* m_pOcean;
+	
 	Rocket* m_pRocket;
 	Space* m_pSpace;
 
