@@ -4,6 +4,7 @@
 #include "glm/gtx/string_cast.hpp"
 #include <algorithm>
 #include <iomanip>
+#include "ScoreBoardManager.h"
 
 //Name : Bilal Shaikh (301093908)
 
@@ -22,6 +23,7 @@ void EndScene::draw()
 	m_pSpace->draw();
 	m_pGameOverLabel->draw();
 	m_pRestartButton->draw();
+	ScoreBoardManager::Instance()->Draw();
 }
 
 void EndScene::update()
